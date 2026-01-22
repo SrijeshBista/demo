@@ -5,19 +5,30 @@ function App() {
   const [name, setName] = useState(""); // this is the output
 
   const [lastname, setLastName] = useState("");
-  const [ok , setok] = useState("[name,Age,feedback]");
+  const [ok, setok] = useState("name,Age,feedback");
+  const [feedback, setFeedback] = useState("");
 
-  const error =() =>{
-    if(name===""|| lastname===""){
+  const error = () => {
+    if (name === "" || lastname === "") {
       alert("Please Enter Your First Name And Last Name");
     }
-    else{
+    else {
       setStep("result");
     }
-
+   
+  }
+  const nice = ()=>{
+     if(name.length>10){
+      alert("Enter 10 Car only")
+    }
   }
   return (
     <div >
+      <input
+        placeholder="Enter feedback"
+        value={feedback}
+        onChange={(e) => setFeedback(e.target.value)}
+      />
       {step === "form" && (
         <>
           <h2>Form</h2>
@@ -29,9 +40,10 @@ function App() {
             onChange={(e) => setLastName(e.target.value)}
           />
           <br /><br />
-          <button onClick={error}>
+          <button onClick={"error nice"}>
             Submit
           </button>
+          
         </>
       )}
 
@@ -44,7 +56,7 @@ function App() {
           </button>
 
 
-        <input  value = {ok} onChange={(e) => setok(e.target.value) }/>
+          <input value={ok} onChange={(e) => setok(e.target.value)} />
 
         </>
       )}
